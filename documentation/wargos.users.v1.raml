@@ -1,0 +1,77 @@
+#%RAML 0.8
+
+title: wargos-user-server
+version: 1
+baseUri: http://user.wargos.ninja:5000/
+mediaType: application/json
+
+/:
+  post:
+    description: Gets uptime and version.
+    body:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "title":"sales-api",
+                "uptime":"2016-11-14T01:05:06.974Z",
+                "version":"20161007"
+              }
+
+/p1:
+  /users:
+    post:
+      body:
+        application/json:
+          schema: !include schema/user/user.post.json
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include schema/user/user.json
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include schema/user/user.array.json
+
+    /{user_id}:
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include schema/user/user.json
+      put:
+        body:
+          application/json:
+            schema: !include schema/user/user.post.json
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include schema/user/user.json
+      delete:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include schema/user/user.json
+
+  /login:
+    post:
+      body:
+        application/json:
+          schema: !include schema/login/data.json
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include schema/login/response.json
+  /logout:
+    post:
+      responses:
+        200:

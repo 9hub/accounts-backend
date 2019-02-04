@@ -1,0 +1,21 @@
+stages:
+  - build
+
+cache:
+  paths:
+    - node_modules/
+
+build:
+  image: node:latest
+  stage: build
+  script:
+    - npm install
+    - node_modules/.bin/gulp build
+    - sudo docker build -t server-members .
+  artifacts:
+    paths:
+      - .tmp
+  only:
+    - develop
+  tags:
+    - production

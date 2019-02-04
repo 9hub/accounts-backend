@@ -1,0 +1,21 @@
+version: "2"
+services:
+  app:
+    container_name: wargos-user-server
+    image: wargos-user-server
+    restart: always
+    # build: .
+    ports:
+      - "5000:5000"
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    volumes:
+      - /wargos/data/db:/data/db
+    ports:
+      - "27017:27017"
+
+# sudo docker-compose up -d

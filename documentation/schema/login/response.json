@@ -1,0 +1,14 @@
+{
+  "token": {
+    "session_id": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJlbWFpbCI6IndvbGZAd29sZi5jb20iLCJwYXNzd29yZCI6ImJmNDM5N2Q4YjRkYzA2MWUxYjZkMTkxYTM1MmU5MTM0IiwiaWF0IjoxNDc5MDg3NTQ4fQ.yMJfdDTH-FgQz7VvBou_-GyxzNXXQcE4sH6t3crpKUiybwSG38NDC4BpMKXfPGUlwNYjDATy9FBbsXT2c-X3GA"
+  },
+  "_id": "57f5a7b66e9afb7037a28f6f",
+  "email": "wolf@wolf.com",
+  "name": "rolf",
+  "password": "bf4397d8b4dc061e1b6d191a352e9134",
+  "cel": "70156988",
+  "role": "admin",
+  "counter": "57f5a7b56e9afb7037a28f6e",
+  "__v": 0,
+  "created": "2016-10-06T01:24:06.016Z"
+}
