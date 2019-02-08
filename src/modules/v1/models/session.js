@@ -1,13 +1,13 @@
 import jwt from 'jsonwebtoken';
 import config from '../../../config';
-import { Member } from './member';
+import { Acount } from './acount';
 import { PasswordUtils } from '../utils/password';
 
 export class Session {
 
   constructor() {
     this.MESSAGE = 'no authorization provided';
-    this.member = new Member();
+    this.member = new Acount();
   }
 
   login(req, res, next) {
