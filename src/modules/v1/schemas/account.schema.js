@@ -3,7 +3,7 @@ import uuid from 'uuid/v1';
 
 let Schema = mongoose.Schema;
 
-mongoose.model('Acount', new Schema({
+mongoose.model('Account', new Schema({
   _id: {
     type: String,
     default: () => { return uuid(); }
