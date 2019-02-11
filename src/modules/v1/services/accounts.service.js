@@ -8,7 +8,7 @@ import {
 let model = new Account();
 let middleware = new MiddlewareService(model);
 
-export class AccountService {
+export class AccountsService {
 
   static query(req, res, next) {
     middleware.query(req, res, next);
