@@ -1,14 +1,14 @@
 import _ from 'lodash';
 import { PasswordUtils } from '../utils/password';
-import { Acount } from '../models/acount';
+import { Account } from '../models/account';
 import {
   MiddlewareService
 } from '../../../components/adapter/middleware.service';
 
-let model = new Acount();
+let model = new Account();
 let middleware = new MiddlewareService(model);
 
-export class AcountService {
+export class AccountService {
 
   static query(req, res, next) {
     middleware.query(req, res, next);
