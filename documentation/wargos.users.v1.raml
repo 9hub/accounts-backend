@@ -1,6 +1,6 @@
-#%RAML 0.8
+#%RAML 1.0
 
-title: wargos-user-server
+title: server-accounts
 version: 1
 baseUri: http://user.wargos.ninja:5000/
 mediaType: application/json
@@ -75,3 +75,63 @@ mediaType: application/json
     post:
       responses:
         200:
+-------------------------------user p2-----------------------------------        
+/p2:
+  /users:
+    post:
+      body:
+        application/json:
+          schema: !include schema/user/user.post.json
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include schema/user/user.json
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include schema/user/user.array.json
+    /{user_id}:
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include schema/user/user.json
+      put:
+        body:
+          application/json:
+            schema: !include schema/user/user.post.json
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include schema/user/user.json
+      /accounts:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include schema/user/user.array.json
+              p2/user/credentiales
+				/type:
+          responses:
+            200:
+              body:
+                application/json:
+                  schema: !include schema/user/user.array.json
+				/id:
+          responses:
+          200:
+            body:
+              application/json:
+                schema: !include schema/user/user.array.json
+				/account_id:
+          responses:
+          200:
+            body:
+              application/json:
+                schema: !include schema/user/user.array.json
+              
