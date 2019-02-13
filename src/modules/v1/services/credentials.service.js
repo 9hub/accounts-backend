@@ -1,5 +1,3 @@
-import _ from 'lodash';
-import { PasswordUtils } from '../utils/password';
 import { Credential } from '../models/credential';
 import {
   MiddlewareService
@@ -19,22 +17,7 @@ export class AccountsService {
   }
 
   static create(req, res, next) {
-    let data = PasswordUtils.change_password(req.body);
-    model.find_one({
-      email: data.email
-    })
-    .then((item) => {
-      if (item) {
-        throw new Error('credential already exist');
-      }
-      return model.create(data);
-    })
-    .then((item) => {
-      res.json(item);
-    })
-    .catch((err) => {
-      next(err);
-    });
+    middleware.create(req, res, next);
   }
 
   static show(req, res, next) {
@@ -42,39 +25,7 @@ export class AccountsService {
   }
 
   static update(req, res, next) {
-    var data = PasswordUtils.change_password(req.body);
-    model.get_by_id(data.user)
-    .then((item) => {
-      if (!item) {
-        throw new Error('invalid credential _id');
-      }
-      if (item.email === data.email) {
-        return item;
-      }
-      return model.find_one({
-        email: data.email
-      })
-      .then((response) => {
-        if (!response) {
-          return item;
-        }
-        if (response._id === data._id) {
-          return response;
-        } else {
-          throw new Error('other users has taken this email');
-        }
-      });
-    })
-    .then((item) => {
-      data = _.extend(item, data);
-      return model.update(data);
-    })
-    .then((item) => {
-      res.json(item);
-    })
-    .catch((err) => {
-      next(err);
-    });
+    middleware.update(req, res, next);
   }
 
   static remove(req, res, next) {
