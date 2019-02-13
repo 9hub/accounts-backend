@@ -5,7 +5,6 @@ import http from 'http';
 import log4js from 'log4js';
 import config from '../../config';
 import { Utils } from './app/utils';
-import socket from '../../socket';
 
 export class System {
 
@@ -40,7 +39,6 @@ export class System {
   start() {
     require('./app/default')(app);
     this.server = http.createServer(app);
-    socket.init(this.server);
     this.server.listen(this.port);
     return Promise.resolve(this.server);
   }

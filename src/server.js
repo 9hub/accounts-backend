@@ -1,15 +1,14 @@
 import 'babel-polyfill';
 import log4js from 'log4js';
-import { System } from './components/system';//busca en el codigo todos los .Route.js para ejecutarlas
-import { MongoDB } from './components/mongo';//inicia la conexion y busca todos los .schema.js
-import { Socket } from './components/socket';
+import { System } from './components/system';
+import { MongoDB } from './components/mongo';
 
 let logger = log4js.getLogger('app');
 logger.level = 'debug';
 
 let system = new System();
 
-MongoDB.start()//hace la conexion a la base de datos
+MongoDB.start()
 .then(() => {
   logger.info('database connect successfully');
   return MongoDB.loadModels(__dirname);
@@ -23,7 +22,6 @@ MongoDB.start()//hace la conexion a la base de datos
   return system.start();
 })
 .then((server) => {
-  Socket.init(server);
   logger.info('server started at port: ' + system.port);
 })
 .catch((err) => {
