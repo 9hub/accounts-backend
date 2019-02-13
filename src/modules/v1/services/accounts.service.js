@@ -1,11 +1,11 @@
 import _ from 'lodash';
 import { PasswordUtils } from '../utils/password';
-import { Accounts } from '../models/accounts';
+import { Account } from '../models/account';
 import {
   MiddlewareService
 } from '../../../components/adapter/middleware.service';
 
-let model = new Accounts();
+let model = new Account();
 let middleware = new MiddlewareService(model);
 
 export class AccountsService {

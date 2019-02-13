@@ -2,7 +2,6 @@ import 'babel-polyfill';
 import log4js from 'log4js';
 import { System } from './components/system';
 import { MongoDB } from './components/mongo';
-import { Socket } from './components/socket';
 
 let logger = log4js.getLogger('app');
 logger.level = 'debug';
@@ -23,7 +22,6 @@ MongoDB.start()
   return system.start();
 })
 .then((server) => {
-  Socket.init(server);
   logger.info('server started at port: ' + system.port);
 })
 .catch((err) => {
