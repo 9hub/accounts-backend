@@ -1,4 +1,4 @@
-#%RAML 0.8
+#%RAML 1.0
 
 title: wargos-user-server
 version: 1
@@ -21,7 +21,7 @@ mediaType: application/json
               }
 
 /p1:
-  /users:
+  /accounts:
     post:
       body:
         application/json:
@@ -38,7 +38,51 @@ mediaType: application/json
             application/json:
               schema: !include schema/user/user.array.json
 
-    /{user_id}:
+    /{account_id}:
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include schema/user/user.json
+      put:
+        body:
+          application/json:
+            schema: !include schema/user/user.post.json
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include schema/user/user.json
+      delete:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include schema/user/user.json
+  /login:
+    post:
+      body:
+        application/json:
+          schema: !include schema/login/data.json
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include schema/login/response.json
+  /logout:
+    post:
+      responses:
+        200:
+  /credentials:    
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include schema/user/user.array.json
+
+    /{credential_id}:
       get:
         responses:
           200:
@@ -61,17 +105,24 @@ mediaType: application/json
               application/json:
                 schema: !include schema/user/user.json
 
-  /login:
-    post:
-      body:
-        application/json:
-          schema: !include schema/login/data.json
+/p2:
+  /accounts:    
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include schema/user/user.array.json    
+  
+    /{accounts_id}:
+      /credentials:
+        post:
+          body:
+            application/json:
+              schema: !include schema/login/data.json
       responses:
         200:
           body:
             application/json:
               schema: !include schema/login/response.json
-  /logout:
-    post:
-      responses:
-        200:
+      
