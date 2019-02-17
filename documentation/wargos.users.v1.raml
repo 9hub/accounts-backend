@@ -1,6 +1,6 @@
 #%RAML 1.0
 
-title: wargos-user-server
+title: server-accounts
 version: 1
 baseUri: http://user.wargos.ninja:5000/
 mediaType: application/json
@@ -25,18 +25,18 @@ mediaType: application/json
     post:
       body:
         application/json:
-          schema: !include schema/user/user.post.json
+          example: !include schema/user/user.post.json
       responses:
         200:
           body:
             application/json:
-              schema: !include schema/user/user.json
+              example: !include schema/user/user.json
     get:
       responses:
         200:
           body:
             application/json:
-              schema: !include schema/user/user.array.json
+              example: !include schema/user/user.array.json
 
     /{account_id}:
       get:
@@ -44,32 +44,32 @@ mediaType: application/json
           200:
             body:
               application/json:
-                schema: !include schema/user/user.json
+                example: !include schema/user/user.json
       put:
         body:
           application/json:
-            schema: !include schema/user/user.post.json
+            example: !include schema/user/user.post.json
         responses:
           200:
             body:
               application/json:
-                schema: !include schema/user/user.json
+                example: !include schema/user/user.json
       delete:
         responses:
           200:
             body:
               application/json:
-                schema: !include schema/user/user.json
+                example: !include schema/user/user.json
   /login:
     post:
       body:
         application/json:
-          schema: !include schema/login/data.json
+          example: !include schema/login/data.json
       responses:
         200:
           body:
             application/json:
-              schema: !include schema/login/response.json
+              example: !include schema/login/response.json
   /logout:
     post:
       responses:
@@ -80,7 +80,7 @@ mediaType: application/json
         200:
           body:
             application/json:
-              schema: !include schema/user/user.array.json
+              example: !include schema/user/user.array.json
 
     /{credential_id}:
       get:
@@ -88,41 +88,40 @@ mediaType: application/json
           200:
             body:
               application/json:
-                schema: !include schema/user/user.json
+                example: !include schema/user/user.json
       put:
         body:
           application/json:
-            schema: !include schema/user/user.post.json
+            example: !include schema/user/user.post.json
         responses:
           200:
             body:
               application/json:
-                schema: !include schema/user/user.json
+                example: !include schema/user/user.json
       delete:
         responses:
           200:
             body:
               application/json:
-                schema: !include schema/user/user.json
+                example: !include schema/user/user.json
 
 /p2:
-  /accounts:    
-    get:
-      responses:
-        200:
-          body:
-            application/json:
-              schema: !include schema/user/user.array.json    
-  
+  /accounts:  
     /{accounts_id}:
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include schema/account/v2/get.json
       /credentials:
         post:
           body:
             application/json:
-              schema: !include schema/login/data.json
+              example: !include schema/login/data.json
       responses:
         200:
           body:
             application/json:
-              schema: !include schema/login/response.json
+              example: !include schema/login/response.json
       
