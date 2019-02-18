@@ -10,7 +10,20 @@ mongoose.model('Credential', new Schema({
   },
   type: {
     type: String,
-    required: true,
+    required: true
+  },
+  key: {
+    type: String,
+    required: true
+  },
+  user_id: {
+    type: String,
+    ref: 'User',
+    required: true
+  },
+  created: {
+    type: Date,
+    default: Date.now
   }
   
 }));
