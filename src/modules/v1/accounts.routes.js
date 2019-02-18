@@ -14,6 +14,15 @@ module.exports = (app) => {
   router.param('account_id', AccountsService.load);
   app.use('/p1', router);
 
+  let routerP = express.Router();
+  // routerP.get('/accounts', AccountsService.query);
+  routerP.route('/accounts/:account_id')
+  .get(AccountsService.show);
+  // .put(AccountsService.update)
+  // .delete(AccountsService.remove);
+  routerP.param('account_id', AccountsService.load);
+  app.use('/p2', routerP);
+
   let routerAuth = express.Router();
   routerAuth.post('/login', SessionService.login);
   routerAuth.post('/logout', Session.auth, SessionService.logout);
