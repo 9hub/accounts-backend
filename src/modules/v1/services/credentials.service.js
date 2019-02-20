@@ -6,7 +6,7 @@ import {
 let model = new Credential();
 let middleware = new MiddlewareService(model);
 
-export class AccountsService {
+export class CredentialsService {
 
   static query(req, res, next) {
     middleware.query(req, res, next);
