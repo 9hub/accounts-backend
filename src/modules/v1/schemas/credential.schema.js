@@ -25,5 +25,4 @@ mongoose.model('Credential', new Schema({
     type: Date,
     default: Date.now
   }
-  
 }));
