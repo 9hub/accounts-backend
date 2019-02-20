@@ -1,10 +1,12 @@
 import _ from 'lodash';
 import { PasswordUtils } from '../utils/password';
 import { Account } from '../models/account';
+import { Credential } from '../models/credential';
 import {
   MiddlewareService
 } from '../../../components/adapter/middleware.service';
 
+let credential = new Credential();
 let model = new Account();
 let middleware = new MiddlewareService(model);
 
@@ -41,8 +43,18 @@ export class AccountsService {
     middleware.show(req, res, next);
   }
 
-  static showP(req, res, next) {
-    middleware.showP(req, res, next);
+  static showCredentials(req, res, next) {
+    console.log(req.account);
+    credential.query({account_id: req.account._id})
+    .then((items) => {
+      console.log(items);
+      req.account._doc.credentials = items;
+
+      res.json(req.account._doc);
+    })
+    .catch((err) => {
+      next(err);
+    });
   }
 
   static update(req, res, next) {
@@ -87,7 +99,6 @@ export class AccountsService {
 
   static load(req, res, next, id) {
     middleware.load(req, res, next, id);
-    // showP();
   }
 
   static page(req, res, next, id) {
