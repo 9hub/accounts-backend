@@ -1,5 +1,7 @@
 {
   "email": "wolf@wolf.com",
-  "name": "rolf",
-  "cel": "70156988"
+  "first_name": "rolf",
+  "last_name": "rolf",
+  "cel": "70156988",
+  "role": "admin"
 }
