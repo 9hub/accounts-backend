@@ -16,9 +16,9 @@ mongoose.model('Credential', new Schema({
     type: String,
     required: true
   },
-  user_id: {
+  account_id: {
     type: String,
-    ref: 'User',
+    ref: 'Account',
     required: true
   },
   created: {

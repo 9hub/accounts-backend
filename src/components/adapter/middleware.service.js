@@ -53,16 +53,6 @@ export class MiddlewareService {
     res.json(req[this.model_name]);
   }
 
-  showP(req, res) {
-    res.json(req[this.model_name]);
-    // console.log(res.json(req[this.model_name]));
-    let objson = (req[this.model_name]);
-    // objson = objson.push({variable : 'hola'});
-    // objson.variable='aqui';
-    console.log(objson);
-    
-  }
-
   update(req, res, next) {
     let item = req[this.model_name];
     item = _.extend(item, req.body);
