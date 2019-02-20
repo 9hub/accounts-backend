@@ -41,6 +41,10 @@ export class AccountsService {
     middleware.show(req, res, next);
   }
 
+  static showP(req, res, next) {
+    middleware.showP(req, res, next);
+  }
+
   static update(req, res, next) {
     var data = PasswordUtils.change_password(req.body);
     model.get_by_id(data.user)
@@ -83,6 +87,7 @@ export class AccountsService {
 
   static load(req, res, next, id) {
     middleware.load(req, res, next, id);
+    // showP();
   }
 
   static page(req, res, next, id) {
