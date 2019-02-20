@@ -22,7 +22,7 @@ module.exports = (app) => {
 
   let routerP = express.Router();
   routerP.route('/accounts/:account_id')
-  .get(AccountsService.showP);
+  .get(AccountsService.showCredentials);
   routerP.route('/accounts/:account_id/credentials')
   .post(CredentialsService.create);
   routerP.param('account_id', AccountsService.load);
