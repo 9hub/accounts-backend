@@ -16,10 +16,6 @@ export class AccountsService {
     middleware.query(req, res, next);
   }
 
-  static queryP(req, res, next) {
-    middleware.query(req, res, next);
-  }
-
   static pagination(req, res, next) {
     middleware.pagination(req, res, next);
   }
