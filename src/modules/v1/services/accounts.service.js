@@ -100,8 +100,6 @@ export class AccountsService {
       return model.update(data);
     })
     .then((item) => {
-      // let account = item;
-      // delete account.password;
       res.json(item);
     })
     .catch((err) => {
@@ -110,7 +108,14 @@ export class AccountsService {
   }
 
   static remove(req, res, next) {
-    middleware.remove(req, res, next);
+    let data = req[model.model_name.toLowerCase()];
+    model.remove(data)
+    .then(() => {
+      res.status(203).end();
+    })
+    .catch((err) => {
+      next(err);
+    });
   }
 
   static load(req, res, next, id) {
