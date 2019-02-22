@@ -13,7 +13,18 @@ let middleware = new MiddlewareService(model);
 export class AccountsService {
 
   static query(req, res, next) {
-    middleware.query(req, res, next);
+    let query = req.query || {};
+    model.query(query)
+    .then((items) => {
+      let accounts = items;
+      accounts.forEach(element => {
+        delete element._doc.password;
+      });
+      res.json(accounts);
+    })
+    .catch((err) => {
+      next(err);
+    });
   }
 
   static pagination(req, res, next) {
@@ -32,7 +43,9 @@ export class AccountsService {
       return model.create(data);
     })
     .then((item) => {
-      res.json(item);
+      let account = item._doc;
+      delete account.password;
+      res.json(account);
     })
     .catch((err) => {
       next(err);
@@ -48,8 +61,10 @@ export class AccountsService {
   static showCredentials(req, res, next) {
     credential.query({account_id: req.account._id})
     .then((items) => {
-      req.account._doc.credentials = items;
-      res.json(req.account._doc);
+      let account = req.account._doc;
+      delete account.password;
+      account.credentials = items;
+      res.json(account);
     })
     .catch((err) => {
       next(err);
@@ -85,6 +100,8 @@ export class AccountsService {
       return model.update(data);
     })
     .then((item) => {
+      // let account = item;
+      // delete account.password;
       res.json(item);
     })
     .catch((err) => {
