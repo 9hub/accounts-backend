@@ -16,6 +16,10 @@ export class AccountsService {
     middleware.query(req, res, next);
   }
 
+  static queryP(req, res, next) {
+    middleware.query(req, res, next);
+  }
+
   static pagination(req, res, next) {
     middleware.pagination(req, res, next);
   }
@@ -40,16 +44,15 @@ export class AccountsService {
   }
 
   static show(req, res, next) {
-    middleware.show(req, res, next);
+    let account = req.account._doc;
+    delete account.password;
+    res.json(account); 
   }
 
   static showCredentials(req, res, next) {
-    console.log(req.account);
     credential.query({account_id: req.account._id})
     .then((items) => {
-      console.log(items);
       req.account._doc.credentials = items;
-
       res.json(req.account._doc);
     })
     .catch((err) => {
