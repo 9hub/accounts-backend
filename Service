@@ -1,0 +1,56 @@
+[1mdiff --git a/src/modules/v1/models/credential.js b/src/modules/v1/models/credential.js[m
+[1mindex 661aa5a..8886c60 100644[m
+[1m--- a/src/modules/v1/models/credential.js[m
+[1m+++ b/src/modules/v1/models/credential.js[m
+[36m@@ -1,7 +1,7 @@[m
+ import { Master } from '../../../components/adapter/master';[m
+ [m
+ export class Credential extends Master {[m
+[31m-[m
+[32m+[m[32m//INESESARY[m
+   constructor() {[m
+     super('Credential');[m
+   }[m
+[1mdiff --git a/src/modules/v1/services/accounts.service.js b/src/modules/v1/services/accounts.service.js[m
+[1mindex 6075021..dbad0af 100644[m
+[1m--- a/src/modules/v1/services/accounts.service.js[m
+[1m+++ b/src/modules/v1/services/accounts.service.js[m
+[36m@@ -16,10 +16,6 @@[m [mexport class AccountsService {[m
+     middleware.query(req, res, next);[m
+   }[m
+ [m
+[31m-  static pagination(req, res, next) {[m
+[31m-    middleware.pagination(req, res, next);[m
+[31m-  }[m
+[31m-[m
+   static create(req, res, next) {[m
+     let data = PasswordUtils.change_password(req.body);[m
+     model.find_one({[m
+[36m@@ -42,13 +38,13 @@[m [mexport class AccountsService {[m
+   static show(req, res, next) {[m
+     middleware.show(req, res, next);[m
+   }[m
+[31m-[m
+[32m+[m[32m//REFACTORI[m
+   static showCredentials(req, res, next) {[m
+     console.log(req.account);[m
+     credential.query({account_id: req.account._id})[m
+     .then((items) => {[m
+       console.log(items);[m
+[31m-      req.account._doc.credentials = items;[m
+[32m+[m[32m      req.account._doc.credential = items;[m
+ [m
+       res.json(req.account._doc);[m
+     })[m
+[36m@@ -101,11 +97,4 @@[m [mexport class AccountsService {[m
+     middleware.load(req, res, next, id);[m
+   }[m
+ [m
+[31m-  static page(req, res, next, id) {[m
+[31m-    middleware.page(req, res, next, id);[m
+[31m-  }[m
+[31m-[m
+[31m-  static limit(req, res, next, id) {[m
+[31m-    middleware.limit(req, res, next, id);[m
+[31m-  }[m
+ }[m

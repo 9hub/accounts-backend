@@ -12,8 +12,10 @@ let middleware = new MiddlewareService(model);
 
 export class AccountsService {
 
+
   static query(req, res, next) {
     middleware.query(req, res, next);
+    
   }
 
   static pagination(req, res, next) {

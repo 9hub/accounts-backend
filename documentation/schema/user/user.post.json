@@ -2,6 +2,6 @@
   "email": "wolf@wolf.com",
   "first_name": "rolf",
   "last_name": "rolf",
-  "cel": "70156988",
-  "role": "admin"
+  "password":"userpass",
+  "phone": "70156988"
 }
