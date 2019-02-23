@@ -6,6 +6,7 @@ import { Session } from '../../components/session';
 
 module.exports = (app) => {
   let router = express.Router();
+  
   router.get('/accounts', AccountsService.query);
   router.post('/accounts', AccountsService.create);
   router.route('/accounts/:account_id')

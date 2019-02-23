@@ -1,22 +1,18 @@
 [
   {
-    "_id": "57f5a8076e9afb7037a28f71",
-    "email": "wargos@wolf.com",
-    "name": "wolf",
-    "cel": "70156988",
-    "role": "admin",
-    "counter": "57f5a8076e9afb7037a28f70",
-    "__v": 0,
-    "created": "2016-10-06T01:25:27.142Z"
+    "_id": "57f5a7b66e9afb7037a28f6f",
+    "email": "wolf@wolf.com",
+    "first_name": "rolf",
+    "last_name": "rolf",
+    "phone": "70156988",
+    "created": "2016-10-06T01: 24:06.016Z"
   },
   {
     "_id": "57f5a7b66e9afb7037a28f6f",
     "email": "wolf@wolf.com",
-    "name": "rolf",
-    "cel": "70156988",
-    "role": "admin",
-    "counter": "57f5a7b56e9afb7037a28f6e",
-    "__v": 0,
+    "first_name": "rolf",
+    "last_name": "rolf",
+    "phone": "70156988",
     "created": "2016-10-06T01: 24:06.016Z"
   }
 ]
