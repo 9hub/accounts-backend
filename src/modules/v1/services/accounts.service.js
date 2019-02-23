@@ -12,6 +12,7 @@ let middleware = new MiddlewareService(model);
 
 export class AccountsService {
 
+
   static query(req, res, next) {
     let query = req.query || {};
     model.query(query)
@@ -100,8 +101,6 @@ export class AccountsService {
       return model.update(data);
     })
     .then((item) => {
-      // let account = item;
-      // delete account.password;
       res.json(item);
     })
     .catch((err) => {

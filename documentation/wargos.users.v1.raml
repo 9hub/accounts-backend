@@ -56,10 +56,7 @@ mediaType: application/json
                 example: !include schema/user/user.json
       delete:
         responses:
-          200:
-            body:
-              application/json:
-                example: !include schema/user/user.json
+          203:
   /login:
     post:
       body:
@@ -73,7 +70,7 @@ mediaType: application/json
   /logout:
     post:
       responses:
-        200:
+        203:
   /credentials:    
     get:
       responses:
@@ -88,23 +85,19 @@ mediaType: application/json
           200:
             body:
               application/json:
-                example: !include schema/user/user.json
+                example: !include schema/account/credentials/credential.json
       put:
         body:
           application/json:
-            example: !include schema/user/user.post.json
+            example: !include schema/account/credentials/get.json
         responses:
           200:
             body:
               application/json:
-                example: !include schema/user/user.json
+                example: !include schema/account/credentials/credential.json
       delete:
         responses:
-          200:
-            body:
-              application/json:
-                example: !include schema/user/user.json
-
+          203:
 /p2:
   /accounts:  
     /{accounts_id}:
@@ -118,10 +111,9 @@ mediaType: application/json
         post:
           body:
             application/json:
-              example: !include schema/login/data.json
-      responses:
-        200:
-          body:
-            application/json:
-              example: !include schema/login/response.json
-      
+              example: !include schema/account/credentials/get.json
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include schema/account/credentials/credential.json
