@@ -12,6 +12,7 @@ let middleware = new MiddlewareService(model);
 
 export class AccountsService {
 
+
   static query(req, res, next) {
     let query = req.query || {};
     model.query(query)
