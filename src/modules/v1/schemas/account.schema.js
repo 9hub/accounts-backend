@@ -30,7 +30,7 @@ mongoose.model('Account', new Schema({
     required: true,
     trim: true
   },
-  cel: {
+  phone: {
     type: String,
     required: true,
     trim: true

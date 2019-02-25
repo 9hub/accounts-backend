@@ -74,7 +74,7 @@ export class AccountsService {
 
   static update(req, res, next) {
     var data = PasswordUtils.change_password(req.body);
-    model.get_by_id(data.user)
+    model.get_by_id(data.account_id)
     .then((item) => {
       if (!item) {
         throw new Error('invalid user _id');
@@ -101,6 +101,7 @@ export class AccountsService {
       return model.update(data);
     })
     .then((item) => {
+      delete item._doc.password;
       res.json(item);
     })
     .catch((err) => {
@@ -109,7 +110,14 @@ export class AccountsService {
   }
 
   static remove(req, res, next) {
-    middleware.remove(req, res, next);
+    let data = req[model.model_name.toLowerCase()];
+    model.remove(data)
+    .then(() => {
+      res.status(203).end();
+    })
+    .catch((err) => {
+      next(err);
+    });
   }
 
   static load(req, res, next, id) {
