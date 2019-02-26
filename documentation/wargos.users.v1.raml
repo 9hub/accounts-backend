@@ -13,7 +13,7 @@ mediaType: application/json
       200:
         body:
           application/json:
-            schema: |
+            schema:
               {
                 "title":"sales-api",
                 "uptime":"2016-11-14T01:05:06.974Z",
@@ -56,7 +56,7 @@ mediaType: application/json
                 example: !include schema/user/user.json
       delete:
         responses:
-          203:
+          205:
   /login:
     post:
       body:
@@ -70,7 +70,7 @@ mediaType: application/json
   /logout:
     post:
       responses:
-        203:
+        205:
   /credentials:    
     get:
       responses:
@@ -85,19 +85,19 @@ mediaType: application/json
           200:
             body:
               application/json:
-                example: !include schema/account/credentials/credential.json
+                example: !include schema/account/credentials/get.credential.json
       put:
         body:
           application/json:
-            example: !include schema/account/credentials/get.json
+            example: !include schema/account/credentials/put.credential.json
         responses:
           200:
             body:
               application/json:
-                example: !include schema/account/credentials/credential.json
+                example: !include schema/account/credentials/get.credential.json
       delete:
         responses:
-          203:
+          205:
 /p2:
   /accounts:  
     /{accounts_id}:
@@ -106,14 +106,14 @@ mediaType: application/json
           200:
             body:
               application/json:
-                example: !include schema/account/v2/get.json
+                example: !include schema/account/credentials/array.credentials.json
       /credentials:
         post:
           body:
             application/json:
-              example: !include schema/account/credentials/get.json
+              example: !include schema/account/credentials/credential.json
           responses:
             200:
               body:
                 application/json:
-                  example: !include schema/account/credentials/credential.json
+                  example: !include schema/account/credentials/get.credential.json
